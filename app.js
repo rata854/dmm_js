@@ -1,40 +1,75 @@
-// var orange = 1000;
-// var apple = 20000;
+// var alertString;
+// alertString = addString("WebCamp");
 
-// if(orange < apple){
-//   alert('みかんの値段がりんごより安い');
-// } else if(orange == apple){
-//   alert('みかんとりんごが同じ値段');
-// } else{
-//   alert('みかんの値段がリンゴより高い');
+// alert(alertString);
+
+// function addString(strA){
+//   var addStr = "Hello" + strA;
+//   return addStr;
 // }
 
-// var max = 200;
-// var num = 1;
-// var count = 0;
 
-// while(num < max){
-//   num = num * 2;
-//   count = count + 1;
-// }
+// var promptStr = prompt('何か好きな文字を入力してください。');
 
-// alert('2を掛け続けて' + max + 'を超えるのに必要だった回数は' + count + '回です。');
+// alert(promptStr)
 
-// var i;
-// var num = 0;
 
-// for(i=1; i<11; i++){
-//   num = num + i;
-// }
+// var user_hand = prompt('じゃんけんの手をグー、チョキ、パーから選んでください。');
 
-// alert('1から10まで足し算した結果は' + num + 'です。');
+// alert('あなたの選んだ手は' + user_hand + 'です。');
 
 // 確認問題
 
-alert(30 + 66);
+var user_hand = prompt('じゃんけんの手をグー、チョキ、パーから選んでください。');
 
-alert(55 - 22);
+var js_hand = getJShand();
 
-alert(63 * 99);
+var judge = winLose(user_hand, js_hand);
 
-alert(22 / 11);
+alert('あなたの選んだ手は' + user_hand + 'です。\nJavaScriptの選んだ手は' + js_hand + 'です。\n結果は' + judge + 'です。');
+
+function getJShand(){
+  var js_hand_num = Math.floor(Math.random()*3);
+
+  if(js_hand_num == 0){
+    js_hand = "グー";
+  }else if(js_hand_num == 1){
+    js_hand ="チョキ";
+  }else if(js_hand_num == 2){
+    js_hand ="パー";
+  }
+
+  return js_hand;
+}
+
+function winLose(user,js){
+  var winLoseStr;
+
+  if(user == "グー"){
+    if(js == "グー"){
+      winLoseStr = "あいこ";
+    }else if(js == "チョキ"){
+      winLoseStr = "勝ち";
+    }else if(js == "パー"){
+      winLoseStr = "負け";
+    }
+  }else if(user == "チョキ"){
+    if(js == "グー"){
+      winLoseStr = "負け";
+    }else if(js == "チョキ"){
+      winLoseStr = "あいこ";
+    }else if(js == "パー"){
+      winLoseStr = "勝ち";
+    }
+  }else if(user == "パー"){
+    if(js == "グー"){
+      winLoseStr = "勝ち";
+    }else if(js == "チョキ"){
+      winLoseStr = "負け";
+    }else if(js == "パー"){
+      winLoseStr = "あいこ";
+    }
+  }
+
+  return winLoseStr;
+}
